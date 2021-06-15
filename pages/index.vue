@@ -1,6 +1,10 @@
 <template>
   <section class="container">
     <h1>Todoリスト</h1>
+    <div class="headerLink">
+      <router-link to="/">Todo Page</router-link>
+      <router-link to="/deletedTodo">Deleted Todo Page</router-link>
+    </div>
     <div class="addArea">
       <input type="text" name="addName" v-model="content" placeholder="タスクを入力してください">
       <button class="button button--green" @click="insert">追加</button>
@@ -22,9 +26,9 @@
       </thead>
       <tbody>
         <tr v-for="(todo, index) in display_todos" :key="index">
-          <td>{{ todo.content }}</td>
-          <td>{{ todo.created }}</td>
-          <td>
+          <td v-if="todo.delete_flg == 0">{{ todo.content }}</td>
+          <td v-if="todo.delete_flg == 0">{{ todo.created_at }}</td>
+          <td v-if="todo.delete_flg == 0">
             <button class="button" 
                       v-bind:class="{
                         'button--yet':todo.state == '作業前',
@@ -34,7 +38,7 @@
                 {{ todo.state }}
             </button>
           </td>
-          <td><button class="button button--red" @click="remove(todo)">削除</button></td>
+          <td v-if="todo.delete_flg == 0"><button class="button button--red" @click="remove(todo)">削除</button></td>
         </tr>
       </tbody>
     </table>
