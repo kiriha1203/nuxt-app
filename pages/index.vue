@@ -1,10 +1,10 @@
 <template>
   <section class="container">
-    <h1>Todoリスト</h1>
+    <!-- <h1>Todoリスト</h1>
     <div class="headerLink">
       <router-link to="/">Todo Page</router-link>
       <router-link to="/deletedTodo">Deleted Todo Page</router-link>
-    </div>
+    </div> -->
     <div class="addArea">
       <input type="text" name="addName" v-model="content" placeholder="タスクを入力してください">
       <button class="button button--green" @click="insert">追加</button>
