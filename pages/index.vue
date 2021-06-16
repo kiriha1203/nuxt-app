@@ -100,6 +100,7 @@ export default {
 <style>
 .container {
   margin: 0 auto;
+  min-width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-flow: column;

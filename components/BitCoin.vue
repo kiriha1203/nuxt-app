@@ -7,16 +7,19 @@
             <div v-if="loading">
                 Loading...
             </div>
-            <div v-else>
+            <div v-else class="text-ani">
                 <ul v-cloak>
+                    <li>
+                        Bitcoin Price
+                    </li>    
                     <li v-for="bpi in bpis" :key="bpi.code"> 
                         {{ bpi.code }} : {{ bpi.rate_float | currencyDecimal }}
                     </li>
-                    <li>
-                        Powered by <a class="coinLink" href="https://www.coindesk.com/price/bitcoin">CoinDesk</a>
-                    </li>
                 </ul>
             </div>
+            <p>
+                Powered by <a class="coinLink" href="https://www.coindesk.com/price/bitcoin">CoinDesk</a>
+            </p>
         </div>
     </div>
 </template>
@@ -58,11 +61,48 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 [v-cloak] {
     display: none;
 }
-a.coinLink {
-    color: aqua;
+
+.text-ani {
+    width: 100%;
+    padding-left: -40px;   
+    background:gray;        
+    overflow:hidden;
+
+    ul {
+        margin: 0;
+        padding-left: 100%;
+        display: inline-block;
+        white-space: nowrap;
+        animation: flowing 18s linear infinite;
+        transform: translateX(0);
+
+        @keyframes flowing {
+            100% {
+                transform: translate(-100%)
+            }
+            
+        }
+
+        li {
+            display: inline;
+            margin: 0 100px 0 0;
+            font-size: 1.2em;
+            color: #fff;
+        }
+    }
 }
+
+p {
+    float: right;
+     
+    a {
+        color: gray;
+    }
+}
+
 </style>
