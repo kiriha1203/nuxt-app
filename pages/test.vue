@@ -16,27 +16,33 @@
 
 
 <script>
-export default {
-    asyncData({ $axios }) {
-        // 取得先URL
-        const url = 'https://api.coindesk.com/v1/bpi/currentprice.json';
-        return $axios.get(url)
-            .then((res) => {
-                return { bpis: res.data.bpi, hasError: false }
-            })
-            .catch((e => {
-                console.log(e)
-                return { hasError: true }
-            }))
+// export default {
+//     data() {
+//         return {
+//             bpis: null,
+//             hasError: true
+//         }
+//     },
+//     asyncData({ $axios }) {
+//         // 取得先URL
+//         const url = 'https://api.coindesk.com/v1/bpi/currentprice.json';
+//         return $axios.get(url)
+//             .then((res) => {
+//                 return { bpis: res.data.bpi, hasError: false }
+//             })
+//             .catch((e => {
+//                 console.log(e)
+//                 return { hasError: true }
+//             }))
         
-    },
-    filters: {
-        currencyDecimal(value) {
-            return value.toFixed(2)
-        }
-    }
+//     },
+//     filters: {
+//         currencyDecimal(value) {
+//             return value.toFixed(2)
+//         }
+//     }
     
-}
+// }
 </script>
 
 <style scoped>

@@ -1,10 +1,10 @@
 <template>
   <section class="container">
     <h1>Todoリスト</h1>
-    <div class="headerLink">
+    <!-- <div class="headerLink">
       <router-link to="/">Todo Page</router-link>
       <router-link to="/deletedTodo">Deleted Todo Page</router-link>
-    </div>
+    </div> -->
     <div class="Filter">
       <button class="button button--gray" v-bind:class="{'is-active':(!find_flg)}" @click="flag_reset">全て</button>
       <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業前')}" @click="find('作業前')">作業前</button>
