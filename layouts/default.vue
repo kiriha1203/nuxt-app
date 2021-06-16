@@ -1,6 +1,7 @@
 <template>
   <div>
     <BaseHeader /> 
+    <BitCoin />
     <Nuxt />
   </div>
 </template>
