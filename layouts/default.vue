@@ -2,7 +2,10 @@
   <div>
     <BaseHeader /> 
     <BitCoin />
-    <Nuxt />
+    <div class="view">
+      <Nuxt />
+      <Chat />
+    </div>
   </div>
 </template>
 
@@ -26,6 +29,54 @@ html {
   box-sizing: border-box;
 }
 
+.view {
+  display: flex;
+  min-width: 100%;
+  min-height: 85vh;
+}
+
+
+.container {
+  margin: 0 auto;
+  min-height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-family:
+    'Quicksand',
+    'Source Sans Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  display: block;
+  font-weight: 300;
+  font-size: 100px;
+  color: #35495e;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-weight: 300;
+  font-size: 42px;
+  color: #526488;
+  word-spacing: 5px;
+  padding-bottom: 15px;
+}
+
+.links {
+  padding-top: 15px;
+}
+
+
 *,
 *::before,
 *::after {
@@ -39,12 +90,26 @@ html {
   border: 1px solid #3b8070;
   color: #3b8070;
   text-decoration: none;
-  padding: 10px 30px;
+  padding: 8px 30px;
 }
 
 .button--green:hover {
   color: #fff;
   background-color: #3b8070;
+}
+
+.button--red {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #cd5c5c;
+  color: #cd5c5c;
+  text-decoration: none;
+  padding: 8px 30px;
+}
+
+.button--green:red {
+  color: #fff;
+  background-color: #cd5c5c;
 }
 
 .button--grey {
@@ -53,7 +118,7 @@ html {
   border: 1px solid #35495e;
   color: #35495e;
   text-decoration: none;
-  padding: 10px 30px;
+  padding: 8px 30px;
   margin-left: 15px;
 }
 

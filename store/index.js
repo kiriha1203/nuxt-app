@@ -36,10 +36,12 @@ const createStore = () => {
 				for(let i = 0; i < state.todos.length; i++) {
 					const ob = state.todos[i];
 					if(ob.content == obj.content && ob.created_at == obj.created_at) {
-						confirm('"' + ob.content + '"' + 'を削除しますか？');
-							ob.delete_flg = 1
-							// state.todos.splice(i, 1);
-							return;
+						if (confirm('"' + ob.content + '"' + 'を削除しますか？')) {
+							ob.delete_flg = 1;
+						} else {
+							ob.delete_flg = 0;
+						}
+						// state.todos.splice(i, 1);
 					}
 				}
 			},
