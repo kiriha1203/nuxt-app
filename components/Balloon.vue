@@ -43,9 +43,11 @@ $other-balloon-color: #FFFFFF;
         }
 
         .message {
+            margin-top: 20px;
             margin-right: 20px;
             background-color: $my-balloon-color;
             text-align: left;
+
 
             &::before {
                 right: -20px;
@@ -63,12 +65,13 @@ $other-balloon-color: #FFFFFF;
         }
 
         .message {
+            margin-top: 20px;
             margin-right: 20px;
             background-color: $other-balloon-color;
 
             &::before {
-                right: -20px;
-                transform: rotate(25deg);
+                left: -20px;
+                transform: rotate(200deg);
                 border-left: 18px solid $other-balloon-color;
             }
         }

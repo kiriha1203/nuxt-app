@@ -5,10 +5,17 @@ const createStore = () => {
 	return new Vuex.Store({
 		state: () => ({
 			todos: [
-				{content: 'テスト', created_at: '2020-04-30 17:00', state: '作業前', delete_flg: 0}, 
-				{content: 'コーディング', created_at: '2020-04-30 16:00', state: '作業中', delete_flg: 0},
-				{content: '環境構築', created_at: '2020-04-30 15:30', state: '完了', delete_flg: 0},
-				{content: '削除確認', created_at: '2020-04-30 15:30', state: '完了', delete_flg: 1},
+				{content: 'todoを作ることができる', created_at: '2020-04-30 17:00', state: '完了', delete_flg: 0}, 
+				{content: 'todoの状態を変更できる', created_at: '2020-04-30 16:00', state: '完了', delete_flg: 0},
+				{content: 'todoの削除機能で削除できる', created_at: '2020-04-30 15:30', state: '完了', delete_flg: 0},
+				{content: 'todoの削除機能でキャンセルを押すと削除されない', created_at: '2020-04-30 15:30', state: '完了', delete_flg: 0},
+				{content: 'todoの追加の下のボタンを押すと検索できる', created_at: '2020-04-30 15:30', state: '完了', delete_flg: 0},
+				{content: 'Todo Page, Deleted Todo Page に遷移できる', created_at: '2020-04-30 15:30', state: '完了', delete_flg: 0},
+				{content: 'ビットコインの金額をAxiosを使用して表示させれている', created_at: '2020-04-30 15:30', state: '完了', delete_flg: 0},
+				{content: 'ハンバーガを押すとチャットのようなものが表示される', created_at: '2020-04-30 15:30', state: '完了', delete_flg: 0},
+				{content: 'チャットの機能の実装', created_at: '2020-04-30 15:30', state: '作業中', delete_flg: 0},
+				{content: 'チャット機能にtodoを連結', created_at: '2020-04-30 15:30', state: '作業前', delete_flg: 0},
+				{content: '削除の確認', created_at: '2020-04-30 15:30', state: '完了', delete_flg: 1},
 
 			],
 			option: [

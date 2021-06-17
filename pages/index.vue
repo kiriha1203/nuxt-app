@@ -1,7 +1,7 @@
 <template>
   <section class="container">
-    <!-- <h1>Todoリスト</h1>
-    <div class="headerLink">
+    <h1>Todoリスト</h1>
+    <!-- <div class="headerLink">
       <router-link to="/">Todo Page</router-link>
       <router-link to="/deletedTodo">Deleted Todo Page</router-link>
     </div> -->
@@ -9,13 +9,13 @@
       <input type="text" name="addName" v-model="content" placeholder="タスクを入力してください">
       <button class="button button--green" @click="insert">追加</button>
     </div>
-    <div class="Filter">
+    <div class="filter">
       <button class="button button--gray" v-bind:class="{'is-active':(!find_flg)}" @click="flag_reset">全て</button>
       <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業前')}" @click="find('作業前')">作業前</button>
       <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業中')}" @click="find('作業中')">作業中</button>
       <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '完了')}" @click="find('完了')">完了</button>
     </div>
-    <table class="Lists">
+    <table class="lists">
       <thead>
         <tr>
           <th>タスク</th>
@@ -29,7 +29,7 @@
           <td v-if="todo.delete_flg == 0">{{ todo.content }}</td>
           <td v-if="todo.delete_flg == 0">{{ todo.created_at }}</td>
           <td v-if="todo.delete_flg == 0">
-            <button class="button" 
+            <button class="button--gray" 
                       v-bind:class="{
                         'button--gray':todo.state == '作業前',
                         'button--gray':todo.state == '作業中',

@@ -76,6 +76,23 @@ html {
   padding-top: 15px;
 }
 
+.addArea {
+  margin: 20px 0;
+}
+
+input {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #3b8070;
+  text-decoration: none;
+  width: 300px;
+  padding: 8px;
+}
+
+.lists {
+  margin-top: 20px;
+}
+
 
 *,
 *::before,
@@ -107,12 +124,12 @@ html {
   padding: 8px 30px;
 }
 
-.button--green:red {
+.button--red:hover {
   color: #fff;
   background-color: #cd5c5c;
 }
 
-.button--grey {
+.button--gray {
   display: inline-block;
   border-radius: 4px;
   border: 1px solid #35495e;
@@ -122,8 +139,14 @@ html {
   margin-left: 15px;
 }
 
-.button--grey:hover {
+.button--gray:hover {
   color: #fff;
   background-color: #35495e;
 }
+
+.button--gray.is-active{
+  color: #fff;
+  background-color: #35495e;
+}
+
 </style>

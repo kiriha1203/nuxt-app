@@ -49,7 +49,7 @@ button {
         bottom: 0;
         left: 0;
         right: 80px;
-        width: 100%;
+        width: 80%;
         font-size: 1.3rem;
         padding: 0 20px;
     }

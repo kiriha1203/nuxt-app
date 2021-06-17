@@ -5,13 +5,13 @@
       <router-link to="/">Todo Page</router-link>
       <router-link to="/deletedTodo">Deleted Todo Page</router-link>
     </div> -->
-    <div class="Filter">
+    <div class="filter">
       <button class="button button--gray" v-bind:class="{'is-active':(!find_flg)}" @click="flag_reset">全て</button>
       <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業前')}" @click="find('作業前')">作業前</button>
       <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業中')}" @click="find('作業中')">作業中</button>
       <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '完了')}" @click="find('完了')">完了</button>
     </div>
-    <table class="Lists">
+    <table class="lists">
       <thead>
         <tr>
           <th>タスク</th>
@@ -26,9 +26,9 @@
           <td v-if="todo.delete_flg == 1">
             <button class="button" 
                       v-bind:class="{
-                        'button--yet':todo.state == '作業前',
-                        'button--progress':todo.state == '作業中',
-                        'button--done':todo.state == '完了'}" >
+                        'button--gray':todo.state == '作業前',
+                        'button--gray':todo.state == '作業中',
+                        'button--gray':todo.state == '完了'}" >
                 {{ todo.state }}
             </button>
           </td>
