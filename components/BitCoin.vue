@@ -17,9 +17,6 @@
                     </li>
                 </ul>
             </div>
-            <p>
-                Powered by <a class="coinLink" href="https://www.coindesk.com/price/bitcoin">CoinDesk</a>
-            </p>
         </div>
     </div>
 </template>
@@ -96,13 +93,4 @@ export default {
         }
     }
 }
-
-p {
-    float: right;
-     
-    a {
-        color: gray;
-    }
-}
-
 </style>

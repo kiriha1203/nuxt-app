@@ -6,6 +6,7 @@
       <Nuxt />
       <Chat />
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -93,6 +94,13 @@ input {
   margin-top: 20px;
 }
 
+.thead {
+  border-bottom: 3px solid #35495e;
+}
+
+.tr {
+  border-bottom: 1px solid #35495e;
+}
 
 *,
 *::before,
@@ -135,6 +143,8 @@ input {
   border: 1px solid #35495e;
   color: #35495e;
   text-decoration: none;
+  width: 102px;
+  height: 39px;
   padding: 8px 30px;
   margin-left: 15px;
 }
