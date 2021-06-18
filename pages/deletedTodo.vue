@@ -24,7 +24,7 @@
           <td v-if="todo.delete_flg == 1">{{ todo.content }}</td>
           <td v-if="todo.delete_flg == 1">{{ todo.created_at }}</td>
           <td v-if="todo.delete_flg == 1">
-            <button class="button" 
+            <button class="button--gray" 
                       v-bind:class="{
                         'button--gray':todo.state == '作業前',
                         'button--gray':todo.state == '作業中',
