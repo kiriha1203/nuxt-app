@@ -52,7 +52,7 @@ export default {
   computed: {
     ...mapState(['todos']),
     display_todos:function() {
-      let deleted_todos = (this.todos).filter(todo => todo.deleted_flg = true);
+      let deleted_todos = (this.todos).filter(todo => todo.deleted_flg);
       if(this.find_flg) {
         let find_todos = deleted_todos.filter(todo => todo.state == this.find_state);
         return find_todos;
