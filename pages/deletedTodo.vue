@@ -5,13 +5,13 @@
       <router-link to="/">Todo Page</router-link>
       <router-link to="/deletedTodo">Deleted Todo Page</router-link>
     </div> -->
-    <div class="filter">
-      <button class="button button--gray" v-bind:class="{'is-active':(!find_flg)}" @click="flag_reset">全て</button>
-      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業前')}" @click="find('作業前')">作業前</button>
-      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業中')}" @click="find('作業中')">作業中</button>
-      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '完了')}" @click="find('完了')">完了</button>
+    <div class="Filter">
+      <button class="button button--gray" v-bind:class="{'is-active':(!find_flg)}" @click="todo_flag_reset">全て</button>
+      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業前')}" @click="todo_find('作業前')">作業前</button>
+      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業中')}" @click="todo_find('作業中')">作業中</button>
+      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '完了')}" @click="todo_find('完了')">完了</button>
     </div>
-    <table class="lists">
+    <table class="Lists">
       <thead>
         <tr>
           <th>タスク</th>
@@ -21,14 +21,14 @@
       </thead>
       <tbody>
         <tr v-for="(todo, index) in display_todos" :key="index">
-          <td v-if="todo.delete_flg == 1">{{ todo.content }}</td>
-          <td v-if="todo.delete_flg == 1">{{ todo.created_at }}</td>
-          <td v-if="todo.delete_flg == 1">
-            <button class="button--gray" 
+          <td>{{ todo.content }}</td>
+          <td>{{ todo.created_at }}</td>
+          <td>
+            <button class="button" 
                       v-bind:class="{
-                        'button--gray':todo.state == '作業前',
-                        'button--gray':todo.state == '作業中',
-                        'button--gray':todo.state == '完了'}" >
+                        'button--yet':todo.state == '作業前',
+                        'button--progress':todo.state == '作業中',
+                        'button--done':todo.state == '完了'}" >
                 {{ todo.state }}
             </button>
           </td>
@@ -52,17 +52,12 @@ export default {
   computed: {
     ...mapState(['todos']),
     display_todos:function() {
+      let deleted_todos = (this.todos).filter(todo => todo.deleted_flg = true);
       if(this.find_flg) {
-        let arr = [];
-        let data = this.todos;
-        data.forEach(element =>{
-          if(element.state == this.find_state) {
-            arr.push(element);
-          }
-        });
-        return arr;
+        let find_todos = deleted_todos.filter(todo => todo.state == this.find_state);
+        return find_todos;
       } else {
-        return this.todos;
+        return deleted_todos;
       }
     }
   },

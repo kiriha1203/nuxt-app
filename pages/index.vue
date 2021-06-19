@@ -7,13 +7,13 @@
     </div> -->
     <div class="addArea">
       <input type="text" name="addName" v-model="content" placeholder="タスクを入力してください">
-      <button class="button button--green" @click="insert">追加</button>
+      <button class="button button--green" @click="todo_create">追加</button>
     </div>
     <div class="filter">
-      <button class="button button--gray" v-bind:class="{'is-active':(!find_flg)}" @click="flag_reset">全て</button>
-      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業前')}" @click="find('作業前')">作業前</button>
-      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業中')}" @click="find('作業中')">作業中</button>
-      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '完了')}" @click="find('完了')">完了</button>
+      <button class="button button--gray" v-bind:class="{'is-active':(!find_flg)}" @click="todo_flag_reset">全て</button>
+      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業前')}" @click="todo_find('作業前')">作業前</button>
+      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '作業中')}" @click="todo_find('作業中')">作業中</button>
+      <button class="button button--gray" v-bind:class="{'is-active':find_flg && (find_state == '完了')}" @click="todo_find('完了')">完了</button>
     </div>
     <table class="lists">
       <thead>
@@ -26,19 +26,19 @@
       </thead>
       <tbody>
         <tr v-for="(todo, index) in display_todos" :key="index">
-          <td v-if="todo.delete_flg == 0">{{ todo.content }}</td>
-          <td v-if="todo.delete_flg == 0">{{ todo.created_at }}</td>
-          <td v-if="todo.delete_flg == 0">
+          <td>{{ todo.content }}</td>
+          <td>{{ todo.created_at }}</td>
+          <td>
             <button class="button--gray" 
                       v-bind:class="{
                         'button--gray':todo.state == '作業前',
                         'button--gray':todo.state == '作業中',
                         'button--gray':todo.state == '完了'}"
-                      @click="changeState(todo)">
+                      @click="todo_changeState(todo)">
                 {{ todo.state }}
             </button>
           </td>
-          <td v-if="todo.delete_flg == 0"><button class="button button--red" @click="remove(todo)">削除</button></td>
+          <td><button class="button button--red" @click="todo_remove(todo)">削除</button></td>
         </tr>
       </tbody>
     </table>
@@ -47,7 +47,6 @@
 
 <script>
 import {mapState} from 'vuex';
-
 export default {
   data: function() {
     return {
@@ -59,38 +58,33 @@ export default {
   computed: {
     ...mapState(['todos']),
     display_todos:function() {
+      let exists_todos = (this.todos).filter(todo => todo.deleted_flg = false);
       if(this.find_flg) {
-        let arr = [];
-        let data = this.todos;
-        data.forEach(element =>{
-          if(element.state == this.find_state) {
-            arr.push(element);
-          }
-        });
-        return arr;
+        let find_todos = exists_todos.filter(todo => todo.state == this.find_state);
+        return find_todos;
       } else {
-        return this.todos;
+        return exists_todos;
       }
     }
   },
   methods: {
-    insert: function() {
+    todo_create: function() {
       if(this.content != ''){
         this.$store.commit('insert', {content: this.content});
         this.content = '';
       }
     },
-    remove: function(todo) {
+    todo_delete: function(todo) {
       this.$store.commit('remove', todo)
     },
-    changeState: function(todo) {
+    todo_changeState: function(todo) {
       this.$store.commit('changeState', todo)
     },
-    find: function(findState) {
+    todo_find: function(findState) {
       this.find_state = findState;
       this.find_flg = true;
     },
-    flag_reset: function() {
+    todo_flag_reset: function() {
       this.find_flg = false;
     }
   }
